@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\Debug\PRE-LAB 3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>PRE-LAB 3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>PRE-LAB 3.map</FILE>
+  <FILE>PRE-LAB 3.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <STACK><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>15</LINE></STACK>
+  <INTERR><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>59</LINE></INTERR>
+  <SETUP><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>28</LINE></SETUP>
+  <LOOP><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>54</LINE></LOOP>
+  <BOTON1><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>74</LINE></BOTON1>
+  <FIN><FILE>C:\Users\Luis Sactic\Documents\GitHub\SECCION-30-IE2025-23437\LAB #3\PRE-LAB 3\PRE-LAB 3\main.asm</FILE><LINE>81</LINE></FIN>
+ </LABELS>
+</ASSEMBLER_INFO>
