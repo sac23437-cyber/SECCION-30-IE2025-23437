@@ -1,0 +1,693 @@
+
+POST-LAB 4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800100  00000408  0000049c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000408  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000b  00800110  00800110  000004ac  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004ac  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004dc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000058  00000000  00000000  0000051c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000089a  00000000  00000000  00000574  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006eb  00000000  00000000  00000e0e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000516  00000000  00000000  000014f9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000130  00000000  00000000  00001a10  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004c4  00000000  00000000  00001b40  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001d8  00000000  00000000  00002004  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  000021dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__vector_16>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 be 01 	jmp	0x37c	; 0x37c <__vector_21>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e8 e0       	ldi	r30, 0x08	; 8
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 31       	cpi	r26, 0x10	; 16
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e1       	ldi	r26, 0x10	; 16
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ab 31       	cpi	r26, 0x1B	; 27
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 0b 01 	call	0x216	; 0x216 <main>
+  9e:	0c 94 02 02 	jmp	0x404	; 0x404 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <_Z11update_ledsv>:
+}
+
+// CONTADOR DE 8 BITS------------------------------------------>
+void update_leds(){
+	// Actualizamos PB4 (bit 0)
+	if(counter_value & 0x01)
+  a6:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+  aa:	80 ff       	sbrs	r24, 0
+  ac:	04 c0       	rjmp	.+8      	; 0xb6 <_Z11update_ledsv+0x10>
+	PORTB |= (1 << PB4);
+  ae:	85 b1       	in	r24, 0x05	; 5
+  b0:	80 61       	ori	r24, 0x10	; 16
+  b2:	85 b9       	out	0x05, r24	; 5
+  b4:	03 c0       	rjmp	.+6      	; 0xbc <_Z11update_ledsv+0x16>
+	else
+	PORTB &= ~(1 << PB4);
+  b6:	85 b1       	in	r24, 0x05	; 5
+  b8:	8f 7e       	andi	r24, 0xEF	; 239
+  ba:	85 b9       	out	0x05, r24	; 5
+	
+	// Actualizamos PB5 (bit 1)
+	if(counter_value & 0x02)
+  bc:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+  c0:	81 ff       	sbrs	r24, 1
+  c2:	04 c0       	rjmp	.+8      	; 0xcc <_Z11update_ledsv+0x26>
+	PORTB |= (1 << PB5);
+  c4:	85 b1       	in	r24, 0x05	; 5
+  c6:	80 62       	ori	r24, 0x20	; 32
+  c8:	85 b9       	out	0x05, r24	; 5
+  ca:	03 c0       	rjmp	.+6      	; 0xd2 <_Z11update_ledsv+0x2c>
+	else
+	PORTB &= ~(1 << PB5);
+  cc:	85 b1       	in	r24, 0x05	; 5
+  ce:	8f 7d       	andi	r24, 0xDF	; 223
+  d0:	85 b9       	out	0x05, r24	; 5
+	
+	// Actualizamos PC0 (bit 2)
+	if(counter_value & 0x04)
+  d2:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+  d6:	82 ff       	sbrs	r24, 2
+  d8:	04 c0       	rjmp	.+8      	; 0xe2 <_Z11update_ledsv+0x3c>
+	PORTC |= (1 << PC0);
+  da:	88 b1       	in	r24, 0x08	; 8
+  dc:	81 60       	ori	r24, 0x01	; 1
+  de:	88 b9       	out	0x08, r24	; 8
+  e0:	03 c0       	rjmp	.+6      	; 0xe8 <_Z11update_ledsv+0x42>
+	else
+	PORTC &= ~(1 << PC0);
+  e2:	88 b1       	in	r24, 0x08	; 8
+  e4:	8e 7f       	andi	r24, 0xFE	; 254
+  e6:	88 b9       	out	0x08, r24	; 8
+	
+	// Actualizamos PC1 (bit 3)
+	if(counter_value & 0x08)
+  e8:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+  ec:	83 ff       	sbrs	r24, 3
+  ee:	04 c0       	rjmp	.+8      	; 0xf8 <_Z11update_ledsv+0x52>
+	PORTC |= (1 << PC1);
+  f0:	88 b1       	in	r24, 0x08	; 8
+  f2:	82 60       	ori	r24, 0x02	; 2
+  f4:	88 b9       	out	0x08, r24	; 8
+  f6:	03 c0       	rjmp	.+6      	; 0xfe <_Z11update_ledsv+0x58>
+	else
+	PORTC &= ~(1 << PC1);
+  f8:	88 b1       	in	r24, 0x08	; 8
+  fa:	8d 7f       	andi	r24, 0xFD	; 253
+  fc:	88 b9       	out	0x08, r24	; 8
+	
+	// Actualizamos PC2 (bit 4)
+	if(counter_value & 0x10)
+  fe:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 102:	84 ff       	sbrs	r24, 4
+ 104:	04 c0       	rjmp	.+8      	; 0x10e <_Z11update_ledsv+0x68>
+	PORTC |= (1 << PC2);
+ 106:	88 b1       	in	r24, 0x08	; 8
+ 108:	84 60       	ori	r24, 0x04	; 4
+ 10a:	88 b9       	out	0x08, r24	; 8
+ 10c:	03 c0       	rjmp	.+6      	; 0x114 <_Z11update_ledsv+0x6e>
+	else
+	PORTC &= ~(1 << PC2);
+ 10e:	88 b1       	in	r24, 0x08	; 8
+ 110:	8b 7f       	andi	r24, 0xFB	; 251
+ 112:	88 b9       	out	0x08, r24	; 8
+	
+	// Actualizamos PC3 (bit 5)
+	if(counter_value & 0x20)
+ 114:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 118:	85 ff       	sbrs	r24, 5
+ 11a:	04 c0       	rjmp	.+8      	; 0x124 <_Z11update_ledsv+0x7e>
+	PORTC |= (1 << PC3);
+ 11c:	88 b1       	in	r24, 0x08	; 8
+ 11e:	88 60       	ori	r24, 0x08	; 8
+ 120:	88 b9       	out	0x08, r24	; 8
+ 122:	03 c0       	rjmp	.+6      	; 0x12a <_Z11update_ledsv+0x84>
+	else
+	PORTC &= ~(1 << PC3);
+ 124:	88 b1       	in	r24, 0x08	; 8
+ 126:	87 7f       	andi	r24, 0xF7	; 247
+ 128:	88 b9       	out	0x08, r24	; 8
+	
+	// Actualizamos PC4 (bit 6)
+	if(counter_value & 0x40)
+ 12a:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 12e:	86 ff       	sbrs	r24, 6
+ 130:	04 c0       	rjmp	.+8      	; 0x13a <_Z11update_ledsv+0x94>
+	PORTC |= (1 << PC4);
+ 132:	88 b1       	in	r24, 0x08	; 8
+ 134:	80 61       	ori	r24, 0x10	; 16
+ 136:	88 b9       	out	0x08, r24	; 8
+ 138:	03 c0       	rjmp	.+6      	; 0x140 <_Z11update_ledsv+0x9a>
+	else
+	PORTC &= ~(1 << PC4);
+ 13a:	88 b1       	in	r24, 0x08	; 8
+ 13c:	8f 7e       	andi	r24, 0xEF	; 239
+ 13e:	88 b9       	out	0x08, r24	; 8
+	
+	// Actualizamos PC5 (bit 7)
+	if(counter_value & 0x80)
+ 140:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 144:	88 23       	and	r24, r24
+ 146:	24 f4       	brge	.+8      	; 0x150 <_Z11update_ledsv+0xaa>
+	PORTC |= (1 << PC5);
+ 148:	88 b1       	in	r24, 0x08	; 8
+ 14a:	80 62       	ori	r24, 0x20	; 32
+ 14c:	88 b9       	out	0x08, r24	; 8
+ 14e:	08 95       	ret
+	else
+	PORTC &= ~(1 << PC5);
+ 150:	88 b1       	in	r24, 0x08	; 8
+ 152:	8f 7d       	andi	r24, 0xDF	; 223
+ 154:	88 b9       	out	0x08, r24	; 8
+ 156:	08 95       	ret
+
+00000158 <_Z15update_displaysv>:
+// CONTADOR DE 8 BITS------------------------------------------>
+
+// DISPLAY'S--------------------------------------------------->
+void update_displays(){
+	// Apagamos ambos display's
+	PORTB &= ~((1 << PB0) | (1 << PB1));
+ 158:	85 b1       	in	r24, 0x05	; 5
+ 15a:	8c 7f       	andi	r24, 0xFC	; 252
+ 15c:	85 b9       	out	0x05, r24	; 5
+	
+	if(display_digit == 0){
+ 15e:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <display_digit>
+ 162:	81 11       	cpse	r24, r1
+ 164:	0b c0       	rjmp	.+22     	; 0x17c <_Z15update_displaysv+0x24>
+		// Mostramos el dígito menos significativo
+		PORTD = seg7_table[hex_digits[0]];
+ 166:	e0 91 10 01 	lds	r30, 0x0110	; 0x800110 <__data_end>
+ 16a:	f0 e0       	ldi	r31, 0x00	; 0
+ 16c:	e0 50       	subi	r30, 0x00	; 0
+ 16e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 170:	80 81       	ld	r24, Z
+ 172:	8b b9       	out	0x0b, r24	; 11
+		PORTB |= (1 << PB0);
+ 174:	85 b1       	in	r24, 0x05	; 5
+ 176:	81 60       	ori	r24, 0x01	; 1
+ 178:	85 b9       	out	0x05, r24	; 5
+ 17a:	0a c0       	rjmp	.+20     	; 0x190 <_Z15update_displaysv+0x38>
+	}
+	else{
+		// Mostramos el dígito más significativo
+		PORTD = seg7_table[hex_digits[1]];
+ 17c:	e0 91 11 01 	lds	r30, 0x0111	; 0x800111 <__data_end+0x1>
+ 180:	f0 e0       	ldi	r31, 0x00	; 0
+ 182:	e0 50       	subi	r30, 0x00	; 0
+ 184:	ff 4f       	sbci	r31, 0xFF	; 255
+ 186:	80 81       	ld	r24, Z
+ 188:	8b b9       	out	0x0b, r24	; 11
+		PORTB |= (1 << PB1);
+ 18a:	85 b1       	in	r24, 0x05	; 5
+ 18c:	82 60       	ori	r24, 0x02	; 2
+ 18e:	85 b9       	out	0x05, r24	; 5
+	}
+	
+	display_digit = !display_digit;
+ 190:	81 e0       	ldi	r24, 0x01	; 1
+ 192:	90 91 14 01 	lds	r25, 0x0114	; 0x800114 <display_digit>
+ 196:	91 11       	cpse	r25, r1
+ 198:	80 e0       	ldi	r24, 0x00	; 0
+ 19a:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <display_digit>
+ 19e:	08 95       	ret
+
+000001a0 <_Z5setupv>:
+    }
+}
+
+/************************/
+// NON-Interrupt subroutines
+void setup(){
+ 1a0:	cf 93       	push	r28
+ 1a2:	df 93       	push	r29
+	cli();
+ 1a4:	f8 94       	cli
+	
+	hex_digits[0] = 0;
+ 1a6:	e0 e1       	ldi	r30, 0x10	; 16
+ 1a8:	f1 e0       	ldi	r31, 0x01	; 1
+ 1aa:	10 82       	st	Z, r1
+	hex_digits[1] = 0;
+ 1ac:	11 82       	std	Z+1, r1	; 0x01
+	counter_value = 0;
+ 1ae:	10 92 19 01 	sts	0x0119, r1	; 0x800119 <counter_value>
+	adc_value = 0;
+ 1b2:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <adc_value+0x1>
+ 1b6:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <adc_value>
+	display_digit = 0;
+ 1ba:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <display_digit>
+	
+	// Configuramos el contador de 8 bits
+	DDRB |= (1 << PB4) | (1 << PB5);  // PB4 y PB5 como salidas
+ 1be:	84 b1       	in	r24, 0x04	; 4
+ 1c0:	80 63       	ori	r24, 0x30	; 48
+ 1c2:	84 b9       	out	0x04, r24	; 4
+	DDRC |= (1 << PC0) | (1 << PC1) | (1 << PC2) | (1 << PC3) | (1 << PC4) | (1 << PC5); // PC0-PC5 como salidas
+ 1c4:	87 b1       	in	r24, 0x07	; 7
+ 1c6:	8f 63       	ori	r24, 0x3F	; 63
+ 1c8:	87 b9       	out	0x07, r24	; 7
+	
+	// Configuramos el displays
+	DDRD = 0xFF; // PD0-PD7 como salidas
+ 1ca:	8f ef       	ldi	r24, 0xFF	; 255
+ 1cc:	8a b9       	out	0x0a, r24	; 10
+	DDRB |= (1 << PB0) | (1 << PB1); // PB0 y PB1 como salidas de control para el displays
+ 1ce:	84 b1       	in	r24, 0x04	; 4
+ 1d0:	83 60       	ori	r24, 0x03	; 3
+ 1d2:	84 b9       	out	0x04, r24	; 4
+	
+	// Configuramos los botones
+	PORTB &= ~((1 << PB2) | (1 << PB3));
+ 1d4:	85 b1       	in	r24, 0x05	; 5
+ 1d6:	83 7f       	andi	r24, 0xF3	; 243
+ 1d8:	85 b9       	out	0x05, r24	; 5
+	
+	// Configuramos el Timer0
+	TCCR0A = 0x00;
+ 1da:	14 bc       	out	0x24, r1	; 36
+	TCCR0B = (1 << CS02) | (1 << CS00); // Colocamos un Prescaler 1024
+ 1dc:	85 e0       	ldi	r24, 0x05	; 5
+ 1de:	85 bd       	out	0x25, r24	; 37
+	TCNT0 = 100;
+ 1e0:	84 e6       	ldi	r24, 0x64	; 100
+ 1e2:	86 bd       	out	0x26, r24	; 38
+	TIMSK0 = (1 << TOIE0);
+ 1e4:	81 e0       	ldi	r24, 0x01	; 1
+ 1e6:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+	
+	// Configuramos el ADC
+	ADMUX = (1 << REFS0) | (1 << MUX2) | (1 << MUX1); // AVcc ref, ADC6 (A6)
+ 1ea:	86 e4       	ldi	r24, 0x46	; 70
+ 1ec:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	ADCSRA = (1 << ADEN) | (1 << ADIE) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // ADC enable, interrupt enable, prescaler 128
+ 1f0:	ca e7       	ldi	r28, 0x7A	; 122
+ 1f2:	d0 e0       	ldi	r29, 0x00	; 0
+ 1f4:	8f e8       	ldi	r24, 0x8F	; 143
+ 1f6:	88 83       	st	Y, r24
+	
+	// Inicializamos el contador y los display's
+	counter_10ms = 0;
+ 1f8:	10 92 1a 01 	sts	0x011A, r1	; 0x80011a <counter_10ms>
+	display_digit = 0;
+ 1fc:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <display_digit>
+	
+	// Mostramos los valores iniciales
+	update_leds();
+ 200:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11update_ledsv>
+	update_displays();
+ 204:	0e 94 ac 00 	call	0x158	; 0x158 <_Z15update_displaysv>
+	
+	// Iniciamos la conversión ADC
+	ADCSRA |= (1 << ADSC);
+ 208:	88 81       	ld	r24, Y
+ 20a:	80 64       	ori	r24, 0x40	; 64
+ 20c:	88 83       	st	Y, r24
+	
+	sei();
+ 20e:	78 94       	sei
+}
+ 210:	df 91       	pop	r29
+ 212:	cf 91       	pop	r28
+ 214:	08 95       	ret
+
+00000216 <main>:
+void read_adc();
+void check_adc_compare();
+/************************/
+// Main Function
+int main(void){
+    setup();
+ 216:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <_Z5setupv>
+ 21a:	ff cf       	rjmp	.-2      	; 0x21a <main+0x4>
+
+0000021c <_Z8read_adcv>:
+// DISPLAY'S--------------------------------------------------->
+
+
+void read_adc(){
+	// Convertimos el valor ADC a 2 dígitos (HEX)
+	uint8_t hex_value = adc_value >> 2;
+ 21c:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <adc_value>
+ 220:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <adc_value+0x1>
+ 224:	96 95       	lsr	r25
+ 226:	87 95       	ror	r24
+ 228:	96 95       	lsr	r25
+ 22a:	87 95       	ror	r24
+	hex_digits[0] = hex_value & 0x0F;						// Dígito menos significativo
+ 22c:	e0 e1       	ldi	r30, 0x10	; 16
+ 22e:	f1 e0       	ldi	r31, 0x01	; 1
+ 230:	98 2f       	mov	r25, r24
+ 232:	9f 70       	andi	r25, 0x0F	; 15
+ 234:	90 83       	st	Z, r25
+	hex_digits[1] = (hex_value >> 4) & 0x0F;				// Dígito más significativo
+ 236:	82 95       	swap	r24
+ 238:	8f 70       	andi	r24, 0x0F	; 15
+ 23a:	81 83       	std	Z+1, r24	; 0x01
+ 23c:	08 95       	ret
+
+0000023e <__vector_16>:
+}
+
+
+/************************/
+// Interrupt routines
+ISR(TIMER0_OVF_vect){
+ 23e:	1f 92       	push	r1
+ 240:	0f 92       	push	r0
+ 242:	0f b6       	in	r0, 0x3f	; 63
+ 244:	0f 92       	push	r0
+ 246:	11 24       	eor	r1, r1
+ 248:	2f 93       	push	r18
+ 24a:	3f 93       	push	r19
+ 24c:	4f 93       	push	r20
+ 24e:	5f 93       	push	r21
+ 250:	6f 93       	push	r22
+ 252:	7f 93       	push	r23
+ 254:	8f 93       	push	r24
+ 256:	9f 93       	push	r25
+ 258:	af 93       	push	r26
+ 25a:	bf 93       	push	r27
+ 25c:	ef 93       	push	r30
+ 25e:	ff 93       	push	r31
+	TCNT0 = 100;
+ 260:	84 e6       	ldi	r24, 0x64	; 100
+ 262:	86 bd       	out	0x26, r24	; 38
+	counter_10ms++;
+ 264:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <counter_10ms>
+ 268:	8f 5f       	subi	r24, 0xFF	; 255
+ 26a:	80 93 1a 01 	sts	0x011A, r24	; 0x80011a <counter_10ms>
+	
+	update_displays();										// Multiplexación de displays
+ 26e:	0e 94 ac 00 	call	0x158	; 0x158 <_Z15update_displaysv>
+	
+	// Antirebote para contador (delay)
+	if(counter_10ms >= 1){
+ 272:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <counter_10ms>
+ 276:	88 23       	and	r24, r24
+ 278:	09 f4       	brne	.+2      	; 0x27c <__vector_16+0x3e>
+ 27a:	6f c0       	rjmp	.+222    	; 0x35a <__vector_16+0x11c>
+		counter_10ms = 0;
+ 27c:	10 92 1a 01 	sts	0x011A, r1	; 0x80011a <counter_10ms>
+		
+		// Botón de incremento (PB3)
+		if((PINB & (1 << PB3)) && (delay_boton1 < 3)){
+ 280:	1b 9b       	sbis	0x03, 3	; 3
+ 282:	06 c0       	rjmp	.+12     	; 0x290 <__vector_16+0x52>
+ 284:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <delay_boton1>
+ 288:	83 30       	cpi	r24, 0x03	; 3
+ 28a:	20 f0       	brcs	.+8      	; 0x294 <__vector_16+0x56>
+ 28c:	80 e0       	ldi	r24, 0x00	; 0
+ 28e:	03 c0       	rjmp	.+6      	; 0x296 <__vector_16+0x58>
+ 290:	80 e0       	ldi	r24, 0x00	; 0
+ 292:	01 c0       	rjmp	.+2      	; 0x296 <__vector_16+0x58>
+ 294:	81 e0       	ldi	r24, 0x01	; 1
+ 296:	88 23       	and	r24, r24
+ 298:	59 f0       	breq	.+22     	; 0x2b0 <__vector_16+0x72>
+			delay_boton1++;
+ 29a:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <delay_boton1>
+ 29e:	8f 5f       	subi	r24, 0xFF	; 255
+ 2a0:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <delay_boton1>
+			if(delay_boton1 == 3){
+ 2a4:	83 30       	cpi	r24, 0x03	; 3
+ 2a6:	a9 f4       	brne	.+42     	; 0x2d2 <__vector_16+0x94>
+				boton1 = 1;
+ 2a8:	81 e0       	ldi	r24, 0x01	; 1
+ 2aa:	80 93 18 01 	sts	0x0118, r24	; 0x800118 <boton1>
+ 2ae:	11 c0       	rjmp	.+34     	; 0x2d2 <__vector_16+0x94>
+			}
+		}
+		else if(!(PINB & (1 << PB3)) && (delay_boton1 > 0)){
+ 2b0:	1b 99       	sbic	0x03, 3	; 3
+ 2b2:	04 c0       	rjmp	.+8      	; 0x2bc <__vector_16+0x7e>
+ 2b4:	90 91 16 01 	lds	r25, 0x0116	; 0x800116 <delay_boton1>
+ 2b8:	91 11       	cpse	r25, r1
+ 2ba:	81 e0       	ldi	r24, 0x01	; 1
+ 2bc:	88 23       	and	r24, r24
+ 2be:	49 f0       	breq	.+18     	; 0x2d2 <__vector_16+0x94>
+			delay_boton1--;
+ 2c0:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <delay_boton1>
+ 2c4:	81 50       	subi	r24, 0x01	; 1
+ 2c6:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <delay_boton1>
+			if(delay_boton1 == 0){
+ 2ca:	81 11       	cpse	r24, r1
+ 2cc:	02 c0       	rjmp	.+4      	; 0x2d2 <__vector_16+0x94>
+				boton1 = 0;
+ 2ce:	10 92 18 01 	sts	0x0118, r1	; 0x800118 <boton1>
+			}
+		}
+		
+		// Botón de decremento (PB2)
+		if((PINB & (1 << PB2)) && (delay_boton2 < 3)){
+ 2d2:	1a 9b       	sbis	0x03, 2	; 3
+ 2d4:	06 c0       	rjmp	.+12     	; 0x2e2 <__vector_16+0xa4>
+ 2d6:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <delay_boton2>
+ 2da:	83 30       	cpi	r24, 0x03	; 3
+ 2dc:	20 f0       	brcs	.+8      	; 0x2e6 <__vector_16+0xa8>
+ 2de:	80 e0       	ldi	r24, 0x00	; 0
+ 2e0:	03 c0       	rjmp	.+6      	; 0x2e8 <__vector_16+0xaa>
+ 2e2:	80 e0       	ldi	r24, 0x00	; 0
+ 2e4:	01 c0       	rjmp	.+2      	; 0x2e8 <__vector_16+0xaa>
+ 2e6:	81 e0       	ldi	r24, 0x01	; 1
+ 2e8:	88 23       	and	r24, r24
+ 2ea:	59 f0       	breq	.+22     	; 0x302 <__vector_16+0xc4>
+			delay_boton2++;
+ 2ec:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <delay_boton2>
+ 2f0:	8f 5f       	subi	r24, 0xFF	; 255
+ 2f2:	80 93 15 01 	sts	0x0115, r24	; 0x800115 <delay_boton2>
+			if(delay_boton2 == 3){
+ 2f6:	83 30       	cpi	r24, 0x03	; 3
+ 2f8:	a9 f4       	brne	.+42     	; 0x324 <__vector_16+0xe6>
+				boton2 = 1;
+ 2fa:	81 e0       	ldi	r24, 0x01	; 1
+ 2fc:	80 93 17 01 	sts	0x0117, r24	; 0x800117 <boton2>
+ 300:	11 c0       	rjmp	.+34     	; 0x324 <__vector_16+0xe6>
+			}
+		}
+		else if(!(PINB & (1 << PB2)) && (delay_boton2 > 0)){
+ 302:	1a 99       	sbic	0x03, 2	; 3
+ 304:	04 c0       	rjmp	.+8      	; 0x30e <__vector_16+0xd0>
+ 306:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <delay_boton2>
+ 30a:	91 11       	cpse	r25, r1
+ 30c:	81 e0       	ldi	r24, 0x01	; 1
+ 30e:	88 23       	and	r24, r24
+ 310:	49 f0       	breq	.+18     	; 0x324 <__vector_16+0xe6>
+			delay_boton2--;
+ 312:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <delay_boton2>
+ 316:	81 50       	subi	r24, 0x01	; 1
+ 318:	80 93 15 01 	sts	0x0115, r24	; 0x800115 <delay_boton2>
+			if(delay_boton2 == 0){
+ 31c:	81 11       	cpse	r24, r1
+ 31e:	02 c0       	rjmp	.+4      	; 0x324 <__vector_16+0xe6>
+				boton2 = 0;
+ 320:	10 92 17 01 	sts	0x0117, r1	; 0x800117 <boton2>
+			}
+		}
+		
+		if(boton1){
+ 324:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <boton1>
+ 328:	88 23       	and	r24, r24
+ 32a:	51 f0       	breq	.+20     	; 0x340 <__vector_16+0x102>
+			counter_value++;
+ 32c:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 330:	8f 5f       	subi	r24, 0xFF	; 255
+ 332:	80 93 19 01 	sts	0x0119, r24	; 0x800119 <counter_value>
+			update_leds();
+ 336:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11update_ledsv>
+			boton1 = 0;
+ 33a:	10 92 18 01 	sts	0x0118, r1	; 0x800118 <boton1>
+ 33e:	0d c0       	rjmp	.+26     	; 0x35a <__vector_16+0x11c>
+		}
+		else if(boton2){
+ 340:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <boton2>
+ 344:	88 23       	and	r24, r24
+ 346:	49 f0       	breq	.+18     	; 0x35a <__vector_16+0x11c>
+			counter_value--;
+ 348:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <counter_value>
+ 34c:	81 50       	subi	r24, 0x01	; 1
+ 34e:	80 93 19 01 	sts	0x0119, r24	; 0x800119 <counter_value>
+			update_leds();
+ 352:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11update_ledsv>
+			boton2 = 0;
+ 356:	10 92 17 01 	sts	0x0117, r1	; 0x800117 <boton2>
+		}
+	}
+}
+ 35a:	ff 91       	pop	r31
+ 35c:	ef 91       	pop	r30
+ 35e:	bf 91       	pop	r27
+ 360:	af 91       	pop	r26
+ 362:	9f 91       	pop	r25
+ 364:	8f 91       	pop	r24
+ 366:	7f 91       	pop	r23
+ 368:	6f 91       	pop	r22
+ 36a:	5f 91       	pop	r21
+ 36c:	4f 91       	pop	r20
+ 36e:	3f 91       	pop	r19
+ 370:	2f 91       	pop	r18
+ 372:	0f 90       	pop	r0
+ 374:	0f be       	out	0x3f, r0	; 63
+ 376:	0f 90       	pop	r0
+ 378:	1f 90       	pop	r1
+ 37a:	18 95       	reti
+
+0000037c <__vector_21>:
+
+
+ISR(ADC_vect){
+ 37c:	1f 92       	push	r1
+ 37e:	0f 92       	push	r0
+ 380:	0f b6       	in	r0, 0x3f	; 63
+ 382:	0f 92       	push	r0
+ 384:	11 24       	eor	r1, r1
+ 386:	2f 93       	push	r18
+ 388:	3f 93       	push	r19
+ 38a:	4f 93       	push	r20
+ 38c:	5f 93       	push	r21
+ 38e:	6f 93       	push	r22
+ 390:	7f 93       	push	r23
+ 392:	8f 93       	push	r24
+ 394:	9f 93       	push	r25
+ 396:	af 93       	push	r26
+ 398:	bf 93       	push	r27
+ 39a:	ef 93       	push	r30
+ 39c:	ff 93       	push	r31
+	// Leemos el valor del ADC
+	adc_value = ADC;
+ 39e:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+ 3a2:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 3a6:	90 93 13 01 	sts	0x0113, r25	; 0x800113 <adc_value+0x1>
+ 3aa:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <adc_value>
+	
+	// Convertimos los dígitos hexadecimales
+	read_adc();
+ 3ae:	0e 94 0e 01 	call	0x21c	; 0x21c <_Z8read_adcv>
+	
+	uint8_t adc_8bit = adc_value >> 2;
+ 3b2:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <adc_value>
+ 3b6:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <adc_value+0x1>
+ 3ba:	96 95       	lsr	r25
+ 3bc:	87 95       	ror	r24
+ 3be:	96 95       	lsr	r25
+ 3c0:	87 95       	ror	r24
+	if (adc_8bit > counter_value) {
+ 3c2:	90 91 19 01 	lds	r25, 0x0119	; 0x800119 <counter_value>
+ 3c6:	98 17       	cp	r25, r24
+ 3c8:	20 f4       	brcc	.+8      	; 0x3d2 <__vector_21+0x56>
+		PORTD |= (1 << PD7);   // Enciende LED si ADC > contador
+ 3ca:	8b b1       	in	r24, 0x0b	; 11
+ 3cc:	80 68       	ori	r24, 0x80	; 128
+ 3ce:	8b b9       	out	0x0b, r24	; 11
+ 3d0:	03 c0       	rjmp	.+6      	; 0x3d8 <__vector_21+0x5c>
+		} else {
+		PORTD &= ~(1 << PD7);  // Apaga LED si ADC <= contador
+ 3d2:	8b b1       	in	r24, 0x0b	; 11
+ 3d4:	8f 77       	andi	r24, 0x7F	; 127
+ 3d6:	8b b9       	out	0x0b, r24	; 11
+	}
+	
+	// Iniciamos una nueva conversión
+	ADCSRA |= (1 << ADSC);
+ 3d8:	ea e7       	ldi	r30, 0x7A	; 122
+ 3da:	f0 e0       	ldi	r31, 0x00	; 0
+ 3dc:	80 81       	ld	r24, Z
+ 3de:	80 64       	ori	r24, 0x40	; 64
+ 3e0:	80 83       	st	Z, r24
+}
+ 3e2:	ff 91       	pop	r31
+ 3e4:	ef 91       	pop	r30
+ 3e6:	bf 91       	pop	r27
+ 3e8:	af 91       	pop	r26
+ 3ea:	9f 91       	pop	r25
+ 3ec:	8f 91       	pop	r24
+ 3ee:	7f 91       	pop	r23
+ 3f0:	6f 91       	pop	r22
+ 3f2:	5f 91       	pop	r21
+ 3f4:	4f 91       	pop	r20
+ 3f6:	3f 91       	pop	r19
+ 3f8:	2f 91       	pop	r18
+ 3fa:	0f 90       	pop	r0
+ 3fc:	0f be       	out	0x3f, r0	; 63
+ 3fe:	0f 90       	pop	r0
+ 400:	1f 90       	pop	r1
+ 402:	18 95       	reti
+
+00000404 <_exit>:
+ 404:	f8 94       	cli
+
+00000406 <__stop_program>:
+ 406:	ff cf       	rjmp	.-2      	; 0x406 <__stop_program>
